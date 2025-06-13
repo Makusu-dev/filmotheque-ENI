@@ -41,12 +41,10 @@ public class Genre {
 
     @Override
     public String toString() {
-        return "Genre{" +
-                "id=" + id +
-                ", titre='" + titre + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder(titre);
+        sb.append(" (").append(id).append(")");
+        return sb.toString();
     }
-
 
     @Override
     public boolean equals(Object o) {

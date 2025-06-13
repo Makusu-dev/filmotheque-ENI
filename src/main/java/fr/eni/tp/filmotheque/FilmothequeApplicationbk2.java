@@ -7,10 +7,10 @@ import org.springframework.context.ApplicationContext;
 import fr.eni.tp.filmotheque.controller.FilmController;
 
 @SpringBootApplication
-public class FilmothequeApplication {
+public class FilmothequeApplicationbk2 {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(FilmothequeApplication.class, args);
+		ApplicationContext context = SpringApplication.run(FilmothequeApplicationbk2.class, args);
 
 		FilmController controller = context.getBean(FilmController.class);
 

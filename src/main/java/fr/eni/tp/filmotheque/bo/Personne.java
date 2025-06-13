@@ -55,11 +55,10 @@ public abstract class Personne {
 
     @Override
     public String toString() {
-        return "Personne{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder(prenom);
+        sb.append(" ").append(nom);
+        sb.append(" (").append(id).append(") ");
+        return sb.toString();
     }
 
     @Override

@@ -17,12 +17,5 @@ public class Participant extends Personne {
         super(id, nom, prenom);
     }
 
-    @Override
-    public String toString() {
-        return super.toString() +
-                "Participant{" +
-                "} ";
-    }
-
 
 }

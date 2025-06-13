@@ -11,19 +11,18 @@ public class Avis {
 
     //Associations
     private Membre membre;
-    private Film film;
 
     public Avis() {
     }
 
-    public Avis(long id, int note, String commentaire, Membre membre, Film film) {
+    public Avis(long id, int note, String commentaire, Membre membre) {
         this.id = id;
         this.note = note;
         this.commentaire = commentaire;
         this.membre = membre;
     }
 
-    public Avis(int note, String commentaire, Membre membre, Film film) {
+    public Avis(int note, String commentaire, Membre membre) {
         this.note = note;
         this.commentaire = commentaire;
         this.membre = membre;
@@ -62,7 +61,6 @@ public class Avis {
                 ", note=" + note +
                 ", commentaire='" + commentaire + '\'' +
                 ", membre=" + membre +
-                ", film=" + film +
                 '}';
     }
 

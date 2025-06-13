@@ -13,14 +13,14 @@ public class Membre extends Personne{
     //Constructeurs
     public Membre() {}
 
-    public Membre(long id, String nom, String prenom, boolean admin, String motDePasse, String pseudo) {
+    public Membre(long id, String nom, String prenom, String motDePasse, String pseudo) {
         super(id, nom, prenom);
         this.admin = admin;
         this.motDePasse = motDePasse;
         this.pseudo = pseudo;
     }
 
-    public Membre(String nom, String prenom, boolean admin, String motDePasse, String pseudo) {
+    public Membre(String nom, String prenom, String motDePasse, String pseudo) {
         super(nom, prenom);
         this.admin = admin;
         this.motDePasse = motDePasse;

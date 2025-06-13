@@ -1,5 +1,6 @@
 package fr.eni.tp.filmotheque.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,8 @@ public class Film {
 
     //Associations
 
-    private List<Participant> listeActeurs;
+    private List<Participant> acteurs;
+    private List<Avis> avis;
     private Participant realisateur;
     private Genre genre;
 
@@ -22,16 +24,19 @@ public class Film {
     public Film() {
     }
 
-    public Film(String titre, int annee, int duree, String synopsis, Participant realisateur, Genre genre) {
+    public Film(String titre, int annee, int duree, String synopsis) {
         Titre = titre;
         this.annee = annee;
         this.duree = duree;
         this.synopsis = synopsis;
         this.realisateur = realisateur;
         this.genre = genre;
+        this.acteurs = new ArrayList<>();
+        this.avis = new ArrayList<>();
+
     }
 
-    public Film(long id, String titre, int annee, int duree, String synopsis, Participant realisateur, Genre genre) {
+    public Film(long id, String titre, int annee, int duree, String synopsis) {
         this.id = id;
         Titre = titre;
         this.annee = annee;
@@ -39,6 +44,8 @@ public class Film {
         this.synopsis = synopsis;
         this.realisateur = realisateur;
         this.genre = genre;
+        acteurs = new ArrayList<>();
+        this.avis = new ArrayList<>();
     }
 
     public long getId() {
@@ -97,25 +104,36 @@ public class Film {
         this.synopsis = synopsis;
     }
 
-    public List<Participant> getListeActeurs() {
-        return listeActeurs;
+    public List<Participant> getActeurs() {
+        return acteurs;
     }
 
     public void ajouterActeur(Participant acteur) {
-        this.listeActeurs.add(acteur);
+        this.acteurs.add(acteur);
+    }
+
+    public List<Avis> getAvis() {
+        return avis;
+    }
+
+    public void ajouterAvis(Avis avis) {
+        this.avis.add(avis);
     }
 
     @Override
     public String toString() {
-        return "Film{" +
-                "id=" + id +
-                ", Titre='" + Titre + '\'' +
-                ", annee=" + annee +
-                ", duree=" + duree +
-                ", synopsis='" + synopsis + '\'' +
-                ", realisateur=" + realisateur +
-                ", genre=" + genre +
-                '}';
+        final StringBuilder sb = new StringBuilder("Film ");
+        sb.append("(").append(id).append(")\n");
+        sb.append("\t").append("Titre : ").append(Titre);
+        sb.append("\t").append("[ Annee :").append(annee);
+        sb.append("\t").append(", duree=").append(duree).append(" ]\n");
+        sb.append("\t").append("Synopsis : \'").append(synopsis).append('\'');
+        sb.append("\t").append("Realisateur: ").append(realisateur).append('\n');
+        sb.append("\t").append("Acteurs=").append(acteurs).append("\n");
+        sb.append("\t").append("Genre=").append(genre).append("\n");
+        sb.append("\t").append("Avis=").append(avis).append("\n");
+
+        return sb.toString();
     }
 
     @Override
