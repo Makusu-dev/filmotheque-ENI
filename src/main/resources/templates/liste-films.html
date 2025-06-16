@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-th-replace="~{layouts/layout :: layout-filmo(titrePage=~{:: title},
+					contenuPage=~{:: .center-main},
+					ressourcesSupp=~{})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main class="center-main">
+<h1>Liste des films</h1>
+<table>
+    <tr>
+        <th><span data-th-text="No"></span></th>
+        <th><span data-th-text="Titre"></span></th>
+        <th><span data-th-text="Annee"></span></th>
+        <th><span data-th-text="Réalisateur"></span></th>
+        <th><span data-th-text="Détails"></span></th>
+    </tr>
+<th:block data-th-each="film: ${listeFilms}">
+        <tr>
+            <td><span data-th-text="${film.id}"></span></td>
+            <td><span data-th-text="${film.titre}"></span></td>
+            <td><span data-th-text="${film.annee}"></span></td>
+            <td><span data-th-text="${film.realisateur}"></span></td>
+            <td>
+                <a data-th-href="@{./detail(id=${film.id})}">Détails</a>
+            </td>
+        </tr>
+</th:block>
+</table>
+</main>
+</body>
+</html>
