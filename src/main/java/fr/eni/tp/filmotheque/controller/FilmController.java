@@ -32,15 +32,17 @@ public class FilmController {
     }
 
     @RequestMapping(path="/detail",  method = {RequestMethod.GET, RequestMethod.POST})
-    private String detail(@RequestParam(defaultValue = "0") int id, Model filmListModel){
+    private String detail(@RequestParam(defaultValue = "0") int id, @RequestParam(defaultValue = "true") boolean readonly , Model filmListModel){
         Film requestedFilm= filmService.consulterFilmParId(id);// souci d'index quid émarre a 1
         filmListModel.addAttribute("requestedFilm", requestedFilm);
-        System.out.println(requestedFilm);
+        filmListModel.addAttribute("readonly", readonly);
+        //System.out.println(requestedFilm);
+        System.out.println(readonly);
         return "detail";
     }
 
     @RequestMapping(path="/avis",  method = {RequestMethod.GET, RequestMethod.POST})
-    private String avis(){
+    private String avis() {
         return "avis";
     }
 

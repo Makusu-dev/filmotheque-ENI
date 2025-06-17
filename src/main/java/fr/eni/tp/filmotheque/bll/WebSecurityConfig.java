@@ -22,7 +22,6 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/index").permitAll()
                         .requestMatchers( "/films/liste-films").permitAll()
-                        .requestMatchers( "/films/detail").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                         .anyRequest().authenticated()
                 )

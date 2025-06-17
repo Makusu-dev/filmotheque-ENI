@@ -9,23 +9,7 @@
 <body>
 <main class="center-main">
 <h1>Détails du film</h1>
-<table>
-    <tr><td>Genre:</td><td data-th-text="${requestedFilm.genre}"></td></tr>
-    <tr><td>Année:</td><td data-th-text="${requestedFilm.annee}"></td></tr>
-    <tr><td>Titre:</td><td data-th-text="${requestedFilm.titre}"></td></tr>
-    <tr><td>Réalisateur:</td><td data-th-text="${requestedFilm.realisateur}"></td></tr>
-    <tr><td>Durée:</td><td data-th-text="${requestedFilm.duree}"></td></tr>
-    <tr>
-        <td>Acteurs:</td>
-        <td>
-        <ul data-th-each="acteur: ${requestedFilm.getActeurs()}">
-        <li data-th-text="${acteur}"></li>
-        </ul>
-        </td>
-
-    </tr>
-    <tr><td>Synopsis</td><td data-th-text="${requestedFilm.synopsis}"></td></tr>
-</table>
+    <div data-th-replace="~{fragments/fragments-formulaire :: frag-form}"></div>
 </main>
 
 </body>

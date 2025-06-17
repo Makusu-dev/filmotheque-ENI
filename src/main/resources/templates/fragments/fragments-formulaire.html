@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-th-fragment="frag-form">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<Form class="flex-outer" data-th-if="${readonly}==false">
+    <div><label for = "inputId" > Genre :</label><input  id="inputId" type="text" name="username"  /></div>
+    <div><label for="inputAnnee"> Année:</label> <input  id="inputAnnee" type="number" name="annee" /> </div>
+    <div><label for="inputTitre"> Titre:</label> <input  id="inputTitre" type="text" name="titre" /> </div>
+    <div><label for="inputReal"> Réalisateur :</label> <input  id="inputReal" type="text" name="realisateur" /> </div>
+    <div><label for="inputDuree"> Durée:</label> <input  id="inputDuree" type="number" name="duree" /> </div>
+    <div><label for="inputActeurs"> Acteurs :</label> <input  id="inputActeurs" type="text" name="acteur" /> </div>
+    <div><label for="inputSynopsis"> Synopsis:</label> <input  id="inputSynopsis" type="text" name="synopsis" /> </div>
+</Form>
+
+<Form class="flex-outer" data-th-if="${readonly}==true">
+
+    <div><label for = "inputIdRo" > Genre :</label><input readonly id="inputIdRo" type="text" name="username"  data-th-value="${requestedFilm.genre}"/></div>
+    <div><label for="inputAnneeRo"> Année:</label> <input readonly id="inputAnneeRo" type="number" name="annee" data-th-value="${requestedFilm.annee}"/> </div>
+    <div><label for="inputTitreRo"> Titre:</label> <input readonly id="inputTitreRo" type="text" name="titre" data-th-value="${requestedFilm.titre}"/> </div>
+    <div><label for="inputRealRo"> Réalisateur :</label> <input readonly id="inputRealRo" type="text" name="realisateur" data-th-value="${requestedFilm.realisateur}"/> </div>
+    <div><label for="inputDureeRo"> Durée:</label> <input readonly id="inputDureeRo" type="number" name="duree" data-th-value="${requestedFilm.duree}"/> </div>
+    <div>
+        <label> Acteurs :
+            <Select name="acteur" multiple disabled>
+            <option data-th-each="acteur: ${requestedFilm.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
+            </Select>
+        </label>
+    </div>
+    <div><label for="inputSynopsisRo"> Synopsis:</label> <input readonly id="inputSynopsisRo" type="text" name="synopsis" data-th-value="${requestedFilm.synopsis}"/> </div>
+</Form>
+<div data-th-if="${readonly}==true"><a data-th-href="@{/films/detail(readonly=false)}">Enregistrer un nouveau film</a></div>
+</body>
+</html>
