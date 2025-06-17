@@ -39,11 +39,10 @@ public class FilmController {
         return "detail";
     }
 
-    @RequestMapping(path="/login", method = {RequestMethod.GET, RequestMethod.POST})
-    private String login(){
-            return "login";
+    @RequestMapping(path="/avis",  method = {RequestMethod.GET, RequestMethod.POST})
+    private String avis(){
+        return "avis";
     }
-
 
 
 

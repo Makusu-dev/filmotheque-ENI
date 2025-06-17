@@ -24,7 +24,6 @@ public class WebSecurityConfig {
                         .requestMatchers( "/films/liste-films").permitAll()
                         .requestMatchers( "/films/detail").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
-                        .requestMatchers("/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
