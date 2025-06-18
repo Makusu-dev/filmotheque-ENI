@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" data-th-fragment="frag-form">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-th-fragment="frag-form" >
 <body>
-<Form class="flex-outer" data-th-if="${readonly}==false">
-    <div><label for = "inputId" > Genre :</label><input  id="inputId" type="text" name="username"  /></div>
+<Form class="flex-outer" data-th-if="${readonly}==false" method="post">
+    <div><label for = "selectGenre" > Genre :</label>
+        <select  id="selectGenre" name="username">
+            <option data-th-each="genre: ${genreSession}" data-th-text="${genre.titre}"></option>
+        </select>
+    </div>
     <div><label for="inputAnnee"> Année:</label> <input  id="inputAnnee" type="number" name="annee" /> </div>
     <div><label for="inputTitre"> Titre:</label> <input  id="inputTitre" type="text" name="titre" /> </div>
     <div><label for="inputReal"> Réalisateur :</label> <input  id="inputReal" type="text" name="realisateur" /> </div>
@@ -23,11 +23,11 @@
     <div><label for="inputRealRo"> Réalisateur :</label> <input readonly id="inputRealRo" type="text" name="realisateur" data-th-value="${requestedFilm.realisateur}"/> </div>
     <div><label for="inputDureeRo"> Durée:</label> <input readonly id="inputDureeRo" type="number" name="duree" data-th-value="${requestedFilm.duree}"/> </div>
     <div>
-        <label> Acteurs :
-            <Select name="acteur" multiple disabled>
+        <label for="selectActeurs"> Acteurs :</label>
+            <Select id="selectActeurs" name="acteur" multiple disabled>
             <option data-th-each="acteur: ${requestedFilm.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
             </Select>
-        </label>
+
     </div>
     <div><label for="inputSynopsisRo"> Synopsis:</label> <input readonly id="inputSynopsisRo" type="text" name="synopsis" data-th-value="${requestedFilm.synopsis}"/> </div>
 </Form>

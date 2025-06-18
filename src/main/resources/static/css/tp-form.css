@@ -8,11 +8,16 @@ form h1 {
 	margin: 15px;
 }
 
+.flex-outer {
+	max-width: 60%;
+}
+
 .flex-outer div {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	margin: 5px;
+
 }
 
 .flex-outer>div>label {
@@ -26,7 +31,7 @@ form h1 {
 
 .flex-outer div button {
 	margin-left: auto;
-	margin-bottom: 5px; padding : 8px 16px;
+	margin-bottom: 5px;
 	border: none;
 	background: #333;
 	color: #f2f2f2;

@@ -1,14 +1,16 @@
 <header xmlns:th="http://www.thymeleaf.org" data-th-fragment="frag-entete-filmo" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
   <nav>
       <span class="logo"><img id="logo-filmo" src="/images/logoFilmotheque.png"><a href="/">Accueil</a></span>
-      <a href="/films/liste-films">Films</a>
-      <a href="/films/avis">Rédiger un avis</a>
-
-      <form th:action="@{/login}" method="get">
+      <a class="navLink" href="/films/liste-films">Films</a>
+      <a class="navLink" href="/session">Test_Login</a>
+      <a sec:authorize="isAuthenticated()" class="navLink" href="/films/avis">Rédiger un avis</a>
+      <a sec:authorize="isAuthenticated()" class="navLink" data-th-href="@{/films/detail(readonly=false)}">Enregistrer un nouveau film</a>
+      <form sec:authorize="isAnonymous()" th:action="@{/login}" method="get">
           <input type="submit" value="login"/>
       </form>
 
       <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+          <span th:remove="tag" sec:authentication="name"></span>
           <input type="submit" value="Sign Out"/>
       </form>
 

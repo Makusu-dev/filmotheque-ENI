@@ -1,5 +1,6 @@
-package fr.eni.tp.filmotheque.bll;
+package fr.eni.tp.filmotheque.bll.security;
 
+import fr.eni.tp.filmotheque.bo.Membre;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,16 +21,18 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/index").permitAll()
+                        .requestMatchers("/", "/films").permitAll()
                         .requestMatchers( "/films/liste-films").permitAll()
+                        .requestMatchers( "/session").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/",true)
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout.permitAll().logoutUrl("/logout").logoutSuccessUrl("/"));
 
         return http.build();
     }
@@ -38,7 +41,7 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
-                        .username("user")
+                        .username("jtrillard@campus-eni.fr")
                         .password("password")
                         .roles("USER")
                         .build();

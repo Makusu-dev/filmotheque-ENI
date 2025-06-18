@@ -2,18 +2,16 @@ package fr.eni.tp.filmotheque.controller;
 
 import fr.eni.tp.filmotheque.bll.FilmService;
 import fr.eni.tp.filmotheque.bo.Film;
+import fr.eni.tp.filmotheque.bo.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequestMapping("films")
-
+@SessionAttributes({"genreSession"})
 @Controller
 public class FilmController {
 
@@ -44,6 +42,13 @@ public class FilmController {
     @RequestMapping(path="/avis",  method = {RequestMethod.GET, RequestMethod.POST})
     private String avis() {
         return "avis";
+    }
+
+    // Méthode pour charger la liste des cours en session
+    @ModelAttribute("genreSession")
+    public List<Genre> chargerGenresSession() {
+        System.out.println("Les genre ont été chargs en session");
+        return filmService.consulterGenres();
     }
 
 
