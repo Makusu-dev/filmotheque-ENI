@@ -1,5 +1,5 @@
 package fr.eni.tp.filmotheque.bll.security;
-
+/*
 import fr.eni.tp.filmotheque.bo.Membre;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class WebSecurityConfig {
 
 
 
-    @Bean
+    //@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
@@ -40,7 +40,7 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
+    //@Bean
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
@@ -53,3 +53,4 @@ public class WebSecurityConfig {
     }
 
 }
+*/

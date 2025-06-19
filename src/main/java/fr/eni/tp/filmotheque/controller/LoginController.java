@@ -34,14 +34,20 @@ public class LoginController {
 
     @RequestMapping(path="/session",method={RequestMethod.GET,RequestMethod.POST})
     public String connexion(
-            @RequestParam(name="email", defaultValue = "jtrillard@campus-eni.fr", required = false) String email,
-            @ModelAttribute("membreSession ") Membre membreEnSession, Model model){
+            @ModelAttribute("membreSession") Membre membreSession,
+            @RequestParam(name="email", defaultValue = "jtrillard@campus-eni.fr", required = false) String email, Model model)
+            {
         System.out.println("mail passé en paramètre"+email);
-        System.out.println("Utilisateur chargé avec le mail"+contexteService.charger(email));
-        Membre membreCharge =  contexteService.charger(email);
-        membreEnSession.setPseudo(membreCharge.getPseudo());
 
-        return "redirect:/";
+        Membre membreCharge =  contexteService.charger(email);
+
+        System.out.println("Utilisateur chargé avec le mail"+membreCharge.getPseudo());
+
+        membreSession.setPseudo(membreCharge.getPseudo());
+
+        System.out.println("Le membre en session est désormais"+membreSession.getPseudo());
+
+        return "redirect:/films/liste-films";
     }
 
     @ModelAttribute("membreSession")
