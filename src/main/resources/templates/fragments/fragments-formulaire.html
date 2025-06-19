@@ -27,10 +27,10 @@
             <option data-th-each="acteur: ${requestedFilm.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
             </Select>
     </div>
-    <div>
-        <th:block data-th-each="avis: ${listeAvis}">
-            <p data-th-text="'-'+${avis}"></p>
-        </th:block>
+    <div><label for="selectAvis">Avis:</label>
+        <select id="selectAvis" multiple disabled>
+            <option data-th-each="avis: ${listeAvis}"  data-th-text="${'-'+avis}"/>
+        </select>
     </div>
 
 

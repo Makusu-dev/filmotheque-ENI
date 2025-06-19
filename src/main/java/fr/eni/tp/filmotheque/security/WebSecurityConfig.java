@@ -1,4 +1,4 @@
-package fr.eni.tp.filmotheque.bll.security;
+package fr.eni.tp.filmotheque.security;
 /*
 import fr.eni.tp.filmotheque.bo.Membre;
 import org.springframework.context.annotation.Bean;
