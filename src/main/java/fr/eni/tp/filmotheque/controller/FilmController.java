@@ -3,6 +3,7 @@ package fr.eni.tp.filmotheque.controller;
 import fr.eni.tp.filmotheque.bll.FilmService;
 import fr.eni.tp.filmotheque.bo.Film;
 import fr.eni.tp.filmotheque.bo.Genre;
+import fr.eni.tp.filmotheque.bo.Membre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("films")
-@SessionAttributes({"genreSession"})
+@SessionAttributes({"genreSession","membreSession"})
 @Controller
 public class FilmController {
 
@@ -51,6 +52,11 @@ public class FilmController {
         return filmService.consulterGenres();
     }
 
+    @ModelAttribute("membreSession")
+    public Membre AddMembre(){
+        System.out.println("Add Attribut Membre to Session");
+        return new Membre();
+    }
 
 
 }

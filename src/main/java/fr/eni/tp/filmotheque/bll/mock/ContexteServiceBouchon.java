@@ -23,10 +23,12 @@ public class ContexteServiceBouchon implements ContexteService {
 		admin.setAdmin(true);
 		lstMembres.add(admin);
 		lstMembres.add(new Membre(3, "Trillard", "Julien", "jtrillard@campus-eni.fr", null));
+		System.out.println(lstMembres);
 	}
 
 	@Override
 	public Membre charger(String email) {
 		return lstMembres.stream().filter(item -> item.getPseudo().equals(email)).findAny().orElse(null);
 	}
+
 }

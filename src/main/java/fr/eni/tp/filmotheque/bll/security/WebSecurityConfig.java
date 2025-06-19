@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.session.SessionManagementFilter;
 
 @Configuration
 
@@ -19,11 +20,13 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/films").permitAll()
                         .requestMatchers( "/films/liste-films").permitAll()
                         .requestMatchers( "/session").permitAll()
+                        .requestMatchers( "/connexion").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -41,7 +44,7 @@ public class WebSecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
-                        .username("jtrillard@campus-eni.fr")
+                        .username("user")
                         .password("password")
                         .roles("USER")
                         .build();

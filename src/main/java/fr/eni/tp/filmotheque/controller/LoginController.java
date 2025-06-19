@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@SessionAttributes({"membresSession"})
+@SessionAttributes({"membreSession"})
 @Controller
 public class LoginController {
 
@@ -26,21 +26,29 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @RequestMapping(path="/session",method={RequestMethod.GET,RequestMethod.POST})
-    public String connexion(@RequestParam(name="email", defaultValue = "jtrillard@campus-eni.fr")
-            @ModelAttribute("membresSession") Membre membre, String email ,Model model){
-            membre = contexteService.charger(email);
 
+    @GetMapping(path="/connexion")
+    private String connexion(){
         return "view-contexte";
     }
 
-    @ModelAttribute("membresSession")
-    public Membre AddMembre(){
-        Membre membre = new Membre();
-        return membre;
+    @RequestMapping(path="/session",method={RequestMethod.GET,RequestMethod.POST})
+    public String connexion(
+            @RequestParam(name="email", defaultValue = "jtrillard@campus-eni.fr", required = false) String email,
+            @ModelAttribute("membreSession ") Membre membreEnSession, Model model){
+        System.out.println("mail passé en paramètre"+email);
+        System.out.println("Utilisateur chargé avec le mail"+contexteService.charger(email));
+        Membre membreCharge =  contexteService.charger(email);
+        membreEnSession.setPseudo(membreCharge.getPseudo());
+
+        return "redirect:/";
     }
 
-
+    @ModelAttribute("membreSession")
+    public Membre AddMembre(){
+        System.out.println("Add Attribut Membre to Session");
+        return new Membre();
+    }
 
 
 }

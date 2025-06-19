@@ -1,6 +1,7 @@
 package fr.eni.tp.filmotheque.bo;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Membre extends Personne{
 
@@ -13,14 +14,14 @@ public class Membre extends Personne{
     //Constructeurs
     public Membre() {}
 
-    public Membre(long id, String nom, String prenom, String motDePasse, String pseudo) {
+    public Membre(long id, String nom, String prenom, String pseudo, String motDePasse) {
         super(id, nom, prenom);
         this.admin = admin;
         this.motDePasse = motDePasse;
         this.pseudo = pseudo;
     }
 
-    public Membre(String nom, String prenom, String motDePasse, String pseudo) {
+    public Membre(String nom, String prenom, String pseudo, String motDePasse) {
         super(nom, prenom);
         this.admin = admin;
         this.motDePasse = motDePasse;
@@ -62,5 +63,17 @@ public class Membre extends Personne{
                 "pseudo='" + pseudo + '\'' +
                 ", admin=" + admin +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Membre membre)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(pseudo, membre.pseudo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), pseudo);
     }
 }
