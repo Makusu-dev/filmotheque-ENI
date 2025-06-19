@@ -65,12 +65,7 @@ public class Membre extends Personne{
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Membre membre)) return false;
-        if (!super.equals(o)) return false;
-        return Objects.equals(pseudo, membre.pseudo);
-    }
+
 
     @Override
     public int hashCode() {

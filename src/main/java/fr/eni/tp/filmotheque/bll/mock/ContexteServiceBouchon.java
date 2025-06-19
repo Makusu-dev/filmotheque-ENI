@@ -23,7 +23,7 @@ public class ContexteServiceBouchon implements ContexteService {
 		admin.setAdmin(true);
 		lstMembres.add(admin);
 		lstMembres.add(new Membre(3, "Trillard", "Julien", "jtrillard@campus-eni.fr", null));
-		System.out.println(lstMembres);
+		//System.out.println(lstMembres);
 	}
 
 	@Override

@@ -1,12 +1,19 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-th-replace="~{layouts/layout :: layout-filmo(titrePage=~{:: title},
+					contenuPage=~{:: .center-main},
+					ressourcesSupp=~{})}">
 <head>
+    <meta charset="UTF-8">
     <title>Rediger un avis</title>
 </head>
 <body>
-<h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+<main class="center-main">
+    <Form class="flex-outer" th:action="@{/avis/publier(filmId=film.id)}" method="post" th:object="${avis}">
+        <h1 data-th-text="'Ajouter un avis au film : '+ ${film.titre}"> </h1>
+        <div><label for="inputNote"> Note:</label> <input required  id="inputNote" type="number" min="1" max="5" th:field="note" /> </div>
+        <div><label for="inputCom"> Commentaire:</label> <textarea required id="inputCom" th:field="commentaire"></textarea></div>
+        <input type="submit" />
+    </Form>
+</main>
 </body>
 </html>

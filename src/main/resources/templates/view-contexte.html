@@ -8,9 +8,14 @@
 </head>
 <body>
 <main class="center-main">
-  <a data-th-href="@{/session(email='jtrillard@campus-eni.fr')}">Julien Trillard</a>
-  <a data-th-href="@{/session(email='sgobin@campus-eni.fr')}">Stéphane Gobin</a>
-  <a data-th-href="@{/session(email='abaille@campus-eni.fr')}">Ane-Lise Baille</a>
+  <th:block data-th-if="${membreSession.getId()==0}">
+    <a data-th-href="@{/session(email='jtrillard@campus-eni.fr')}">Julien Trillard</a>
+    <a data-th-href="@{/session(email='sgobin@campus-eni.fr')}">Stéphane Gobin</a>
+    <a data-th-href="@{/session(email='abaille@campus-eni.fr')}">Ane-Lise Baille</a>
+  </th:block>
+  <th:block >
+    <a data-th-href="@{/deconnexion}">Déconnexion</a>
+  </th:block>
 
 </main>
 </body>

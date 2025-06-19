@@ -26,6 +26,9 @@
             <td><span data-th-text="${film.realisateur}"></span></td>
             <td>
                 <a data-th-href="@{./detail(id=${film.id})}">Détails</a>
+                <th:block data-th-if="${membreSession.getId()!=0}">
+                    <a data-th-href="@{/avis/creer(filmId=${film.id})}">Avis</a>
+                </th:block>
             </td>
         </tr>
 </th:block>

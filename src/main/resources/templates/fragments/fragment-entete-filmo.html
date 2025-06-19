@@ -2,7 +2,7 @@
   <nav>
       <span class="logo"><img id="logo-filmo" src="/images/logoFilmotheque.png"><a href="/">Accueil</a></span>
       <a class="navLink" href="/films/liste-films">Films</a>
-      <a class="navLink" href="/connexion">Test_Login</a>
+      <a class="navLink" href="/contexte">Test_Login</a>
 
 
 
@@ -20,7 +20,8 @@
           <input type="submit" value="Sign Out"/>
       </form>
 
-      <p data-th-text="'Membre'+${membreSession}"></p>
+
+      <p data-th-text="${membreSession}"></p>
 
 
 

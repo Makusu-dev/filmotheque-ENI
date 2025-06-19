@@ -16,7 +16,6 @@
 </Form>
 
 <Form class="flex-outer" data-th-if="${readonly}==true">
-
     <div><label for = "inputIdRo" > Genre :</label><input readonly id="inputIdRo" type="text" name="username"  data-th-value="${requestedFilm.genre}"/></div>
     <div><label for="inputAnneeRo"> Année:</label> <input readonly id="inputAnneeRo" type="number" name="annee" data-th-value="${requestedFilm.annee}"/> </div>
     <div><label for="inputTitreRo"> Titre:</label> <input readonly id="inputTitreRo" type="text" name="titre" data-th-value="${requestedFilm.titre}"/> </div>
@@ -27,8 +26,14 @@
             <Select id="selectActeurs" name="acteur" multiple disabled>
             <option data-th-each="acteur: ${requestedFilm.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
             </Select>
-
     </div>
+    <div>
+        <th:block data-th-each="avis: ${listeAvis}">
+            <p data-th-text="'-'+${avis}"></p>
+        </th:block>
+    </div>
+
+
     <div><label for="inputSynopsisRo"> Synopsis:</label> <input readonly id="inputSynopsisRo" type="text" name="synopsis" data-th-value="${requestedFilm.synopsis}"/> </div>
 </Form>
 <div data-th-if="${readonly}==true"><a data-th-href="@{/films/detail(readonly=false)}">Enregistrer un nouveau film</a></div>

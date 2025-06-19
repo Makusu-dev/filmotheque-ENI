@@ -1,6 +1,7 @@
 package fr.eni.tp.filmotheque.controller;
 
 import fr.eni.tp.filmotheque.bll.FilmService;
+import fr.eni.tp.filmotheque.bo.Avis;
 import fr.eni.tp.filmotheque.bo.Film;
 import fr.eni.tp.filmotheque.bo.Genre;
 import fr.eni.tp.filmotheque.bo.Membre;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("films")
+@RequestMapping({"/","films"})
 @SessionAttributes({"genreSession","membreSession"})
 @Controller
 public class FilmController {
@@ -22,6 +23,8 @@ public class FilmController {
     public FilmController(FilmService filmService){
         this.filmService = filmService;
     }
+
+
 
     @RequestMapping(path="/liste-films",  method = {RequestMethod.GET, RequestMethod.POST})
         private String listerFilms(Model filmListModel){
@@ -36,7 +39,9 @@ public class FilmController {
         filmListModel.addAttribute("requestedFilm", requestedFilm);
         filmListModel.addAttribute("readonly", readonly);
         //System.out.println(requestedFilm);
-        System.out.println(readonly);
+        //System.out.println(readonly);
+        List<Avis> listeAvis = filmService.consulterAvis(id);
+        filmListModel.addAttribute("listeAvis", listeAvis);
         return "detail";
     }
 
@@ -57,6 +62,5 @@ public class FilmController {
         System.out.println("Add Attribut Membre to Session");
         return new Membre();
     }
-
 
 }
