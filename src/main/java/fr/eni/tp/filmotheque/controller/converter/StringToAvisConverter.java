@@ -23,6 +23,7 @@ public class StringToAvisConverter implements Converter<String, List<Avis>> {
 
     @Override
     public List<Avis> convert(String id) {
+        //attention chek if null
         System.out.println("Convert - " + id);
         Integer TheId = Integer.parseInt(id);
         return filmService.consulterAvis(TheId);

@@ -19,6 +19,7 @@ public class StringToGenreConverter implements Converter<String, Genre> {
 
     @Override
     public Genre convert(String id) {
+        //attention chek if null
         System.out.println("Convert - " + id);
         Integer TheId = Integer.parseInt(id);
         return filmService.consulterGenreParId(TheId);

@@ -36,9 +36,8 @@ public class FilmController {
 
     @RequestMapping(path="/detail",  method = {RequestMethod.GET, RequestMethod.POST})
     private String detail(@RequestParam(defaultValue = "0") int id, @RequestParam(defaultValue = "true") boolean readonly , Model detail){
-        Film requestedFilm= filmService.consulterFilmParId(id);// souci d'index quid émarre a 1
-        detail.addAttribute("requestedFilm", requestedFilm);
-        detail.addAttribute("readonly", readonly);
+        Film film= filmService.consulterFilmParId(id);// souci d'index quid émarre a 1
+        detail.addAttribute("film", film);
         //System.out.println(requestedFilm);
         //System.out.println(readonly);
         List<Avis> listeAvis = filmService.consulterAvis(id);
@@ -87,5 +86,7 @@ public class FilmController {
         System.out.println("Add Attribut Membre to Session");
         return new Membre();
     }
+
+
 
 }

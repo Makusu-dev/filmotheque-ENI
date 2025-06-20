@@ -1,7 +1,8 @@
 <div xmlns:th="http://www.thymeleaf.org"
     data-th-fragment="frag-liste-genre-lecture">
   <label for="selectGenre">Genre : </label>
-  <Select id="selectGenre" multiple="multiple" disabled>
-    <option data-th-each="genre : ${requestedFilm.getGenre()}" data-th-text="${genre}"></option>
+  <Select id="selectGenre" th:field="${film.genre}">
+    <option data-th-if="${film.getId()!=0}" data-th-each="genre : ${film.getGenre()}" data-th-value="${genre}" data-th-text="${genre}"></option>
+    <option data-th-if="${film.getId()==0}" data-th-each="genre : ${genreSession}" data-th-value="${genre.id}" data-th-text="${genre}"></option>
   </Select>
 </div>

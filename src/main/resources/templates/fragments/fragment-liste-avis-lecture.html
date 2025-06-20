@@ -1,8 +1,7 @@
 <div xmlns:th="http://www.thymeleaf.org"
-     data-th-fragment="frag-liste-avis-lecture"
->
+     data-th-fragment="frag-liste-avis-lecture">
     <label for="selectAvis">Avis:</label>
-    <select id="selectAvis" multiple >
-        <option data-th-each="av: ${listeAvis}"  data-th-text="${'-'+av}"/>
+    <select id="selectAvis" multiple th:field="${film.avis}">
+        <option data-th-if="${film.getId()!=0}" data-th-each="av: ${listeAvis}"  data-th-text="${'-'+av}"/>
     </select>
 </div>

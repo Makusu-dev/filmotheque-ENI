@@ -1,7 +1,7 @@
 <div xmlns:th="http://www.thymeleaf.org"
      data-th-fragment="frag-liste-acteurs-lecture">
   <label for="selectActeurs"> Acteurs :</label>
-  <Select id="selectActeurs" name="acteur" multiple disabled>
-    <option data-th-each="acteur: ${requestedFilm.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
+  <Select id="selectActeurs" th:field="${film.acteurs}" multiple >
+    <option data-th-if="${film.getId()!=0}" data-th-each="acteur: ${film.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
   </Select>
 </div>

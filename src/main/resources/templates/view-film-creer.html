@@ -11,9 +11,10 @@
 <main class="center-main">
     <!-- Placement du formulaire en fragments-->
     <div data-th-replace="~{fragments/fragment-film-form ::
-frag-film-form('/films/creer', 'Détails du film', ~{fragments/fragment-liste-genre-ecriture :: frag-liste-genre-ecriture},
-~{fragments/fragment-liste-acteurs-lecture :: frag-liste-acteurs-ecriture},
-~{fragments/fragment-liste-avis-lecture :: frag-liste-avis-ecriture})}"></div>
+frag-film-form('/films/creer', 'Détails du film', ~{fragments/fragment-liste-genre-lecture :: frag-liste-genre-lecture},
+~{fragments/fragment-liste-acteurs-lecture :: frag-liste-acteurs-lecture},
+~{fragments/fragment-liste-avis-lecture :: frag-liste-avis-lecture})}"></div>
+
 </main>
 </body>
 </html>

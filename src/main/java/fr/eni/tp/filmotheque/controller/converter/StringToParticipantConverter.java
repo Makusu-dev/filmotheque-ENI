@@ -20,6 +20,7 @@ public class StringToParticipantConverter implements Converter<String, Participa
 
     @Override
     public Participant convert(String id) {
+        //attention chek if null
         System.out.println("Convert - " + id);
         Integer TheId = Integer.parseInt(id);
         return filmService.consulterParticipantParId(TheId);
