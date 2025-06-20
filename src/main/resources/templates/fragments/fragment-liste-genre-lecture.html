@@ -1,0 +1,7 @@
+<div xmlns:th="http://www.thymeleaf.org"
+    data-th-fragment="frag-liste-genre-lecture">
+  <label for="selectGenre">Genre : </label>
+  <Select id="selectGenre" multiple="multiple" disabled>
+    <option data-th-each="genre : ${requestedFilm.getGenre()}" data-th-text="${genre}"></option>
+  </Select>
+</div>

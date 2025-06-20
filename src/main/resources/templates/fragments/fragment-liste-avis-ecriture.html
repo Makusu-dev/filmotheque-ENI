@@ -1,0 +1,9 @@
+<!-- a faire-->
+<div xmlns:th="http://www.thymeleaf.org"
+     data-th-fragment="frag-liste-avis-lecture"
+>
+    <label for="selectAvis">Avis:</label>
+    <select id="selectAvis" multiple >
+        <option data-th-each="av: ${listeAvis}"  data-th-text="${'-'+av}"/>
+    </select>
+</div>

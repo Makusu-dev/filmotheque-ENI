@@ -10,6 +10,7 @@
 <main class="center-main">
 <h1>Liste des films</h1>
 
+    <!-- Possible fragmentation a faire également-->
     <table>
     <tr>
         <th><span data-th-text="No"></span></th>
@@ -27,12 +28,15 @@
             <td>
                 <a data-th-href="@{./detail(id=${film.id})}">Détails</a>
                 <th:block data-th-if="${membreSession.getId()!=0}">
-                    <a data-th-href="@{/avis/creer(filmId=${film.id})}">Avis</a>
+                    <a data-th-href="@{/avis/creer-avis(filmId=${film.id})}">Avis</a>
                 </th:block>
             </td>
         </tr>
 </th:block>
 </table>
+    <th:block data-th-if="${membreSession.getId()!=0}">
+        <a data-th-href="@{/films/creer}">Créer</a>
+    </th:block>
 </main>
 </body>
 </html>

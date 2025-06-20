@@ -1,0 +1,7 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     data-th-fragment="frag-liste-acteurs-lecture">
+  <label for="selectActeurs"> Acteurs :</label>
+  <Select id="selectActeurs" name="acteur" multiple disabled>
+    <option data-th-each="acteur: ${requestedFilm.getActeurs()}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
+  </Select>
+</div>

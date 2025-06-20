@@ -3,7 +3,7 @@
 <body>
 <Form class="flex-outer" data-th-if="${readonly}==false" method="post">
     <div><label for = "selectGenre" > Genre :</label>
-        <select  id="selectGenre" name="username">
+        <select  id="selectGenre" name="genre">
             <option data-th-each="genre: ${genreSession}" data-th-text="${genre.titre}"></option>
         </select>
     </div>
@@ -29,7 +29,7 @@
     </div>
     <div><label for="selectAvis">Avis:</label>
         <select id="selectAvis" multiple disabled>
-            <option data-th-each="avis: ${listeAvis}"  data-th-text="${'-'+avis}"/>
+            <option data-th-each="av: ${listeAvis}"  data-th-text="${'-'+av}"/>
         </select>
     </div>
 

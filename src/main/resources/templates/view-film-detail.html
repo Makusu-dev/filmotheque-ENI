@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" data-th-replace="~{layouts/layout :: layout-filmo(titrePage=~{:: title},
+					contenuPage=~{:: .center-main},
+					ressourcesSupp=~{})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du film</title>
+</head>
+<body>
+<main class="center-main">
+    <!-- Placement du formulaire en fragments-->
+    <div data-th-replace="~{fragments/fragment-film-form ::
+frag-film-form('/films/detail', 'Détails du film', ~{fragments/fragment-liste-genre-lecture :: frag-liste-genre-lecture},
+~{fragments/fragment-liste-acteurs-lecture :: frag-liste-acteurs-lecture},
+~{fragments/fragment-liste-avis-lecture :: frag-liste-avis-lecture})}"></div>
+</main>
+</body>
+</html>

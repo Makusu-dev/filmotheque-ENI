@@ -8,10 +8,11 @@
 </head>
 <body>
 <main class="center-main">
-    <Form class="flex-outer" th:action="@{/avis/publier(filmId=film.id)}" method="post" th:object="${avis}">
+    <!-- Possible fragmentation à faire-->
+    <Form class="flex-outer" th:action="@{/avis/publier(filmId=${film.id})}" method="post" th:object="${avis}">
         <h1 data-th-text="'Ajouter un avis au film : '+ ${film.titre}"> </h1>
-        <div><label for="inputNote"> Note:</label> <input required  id="inputNote" type="number" min="1" max="5" th:field="note" /> </div>
-        <div><label for="inputCom"> Commentaire:</label> <textarea required id="inputCom" th:field="commentaire"></textarea></div>
+        <div><label for="inputNote"> Note:</label> <input required  id="inputNote" type="number" min="1" max="5" th:value="*{note}" /> </div>
+        <div><label for="inputCom"> Commentaire:</label> <textarea required id="inputCom" th:field="*{commentaire}"></textarea></div>
         <input type="submit" />
     </Form>
 </main>

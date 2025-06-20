@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -30,24 +31,48 @@ public class FilmController {
         private String listerFilms(Model filmListModel){
         List<Film> listeFilms = filmService.consulterFilms();
         filmListModel.addAttribute("listeFilms", listeFilms);
-        return "liste-films";
+        return "view-liste-films";
     }
 
     @RequestMapping(path="/detail",  method = {RequestMethod.GET, RequestMethod.POST})
-    private String detail(@RequestParam(defaultValue = "0") int id, @RequestParam(defaultValue = "true") boolean readonly , Model filmListModel){
+    private String detail(@RequestParam(defaultValue = "0") int id, @RequestParam(defaultValue = "true") boolean readonly , Model detail){
         Film requestedFilm= filmService.consulterFilmParId(id);// souci d'index quid émarre a 1
-        filmListModel.addAttribute("requestedFilm", requestedFilm);
-        filmListModel.addAttribute("readonly", readonly);
+        detail.addAttribute("requestedFilm", requestedFilm);
+        detail.addAttribute("readonly", readonly);
         //System.out.println(requestedFilm);
         //System.out.println(readonly);
         List<Avis> listeAvis = filmService.consulterAvis(id);
-        filmListModel.addAttribute("listeAvis", listeAvis);
-        return "detail";
+        detail.addAttribute("listeAvis", listeAvis);
+
+        return "view-film-detail";
+    }
+
+    // mise a jour d'un film (méthode non existante dans le service pour le moment)
+    /*
+    @RequestMapping(path="/detail",  method = {RequestMethod.GET, RequestMethod.POST})
+    public String detail(@ModelAttribute("film") Film film) {
+        System.out.println("Le film récupéré depuis le modèle: ");
+        System.out.println(film);
+        filmService.majFilm();
+        return "redirect:/films/liste-films";
+    }
+     */
+
+    @GetMapping("/creer")
+    public ModelAndView creerFilm(){
+        Film film = new Film();
+        return new ModelAndView("view-film-creer", "film", film);
+    }
+
+    @PostMapping("/creer")
+    public String creerFilm(@ModelAttribute("film") Film film){
+        filmService.creerFilm(film);
+        return "redirect:/liste-films";
     }
 
     @RequestMapping(path="/avis",  method = {RequestMethod.GET, RequestMethod.POST})
     private String avis() {
-        return "avis";
+        return "view-avis-creer";
     }
 
     // Méthode pour charger la liste des cours en session

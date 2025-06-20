@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" data-th-replace="~{layouts/layout :: layout-filmo(titrePage=~{:: title},
+					contenuPage=~{:: .center-main},
+					ressourcesSupp=~{})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un film</title>
+</head>
+<body>
+<!-- A modifier -->
+<main class="center-main">
+    <!-- Placement du formulaire en fragments-->
+    <div data-th-replace="~{fragments/fragment-film-form ::
+frag-film-form('/films/creer', 'Détails du film', ~{fragments/fragment-liste-genre-ecriture :: frag-liste-genre-ecriture},
+~{fragments/fragment-liste-acteurs-lecture :: frag-liste-acteurs-ecriture},
+~{fragments/fragment-liste-avis-lecture :: frag-liste-avis-ecriture})}"></div>
+</main>
+</body>
+</html>
