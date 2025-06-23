@@ -2,6 +2,6 @@
      data-th-fragment="frag-liste-avis">
     <label for="selectAvis">Avis:</label>
     <div><select id="selectAvis" multiple th:field="${film.avis}">
-        <option data-th-if="${film.getId()!=0}" data-th-each="av: ${listeAvis}"  data-th-text="${'-'+av}" data-th-value="${av.id}"/>
+        <option data-th-if="${film.getId()!=0}" data-th-each="av: ${listeAvis}"  data-th-text="${'-'+av.commentaire + '[' + av.note + '] ' + '(' + av.membre.getPrenom + ')' }" data-th-value="${av.id}"/>
     </select></div>
 </div>

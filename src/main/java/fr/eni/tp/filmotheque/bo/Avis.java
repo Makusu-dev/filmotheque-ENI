@@ -62,12 +62,8 @@ public class Avis {
 
     @Override
     public String toString() {
-        return "Avis{" +
-                "id=" + id +
-                ", note=" + note +
-                ", commentaire='" + commentaire + '\'' +
-                ", membre=" + membre +
-                '}';
+        return     commentaire +  " [" + note + "] - (" + membre +
+                ')';
     }
 
     @Override
