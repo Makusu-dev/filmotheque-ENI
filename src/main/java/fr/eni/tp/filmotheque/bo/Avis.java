@@ -52,7 +52,13 @@ public class Avis {
         this.commentaire = commentaire;
     }
 
+    public Membre getMembre() {
+        return membre;
+    }
 
+    public void setMembre(Membre membre) {
+        this.membre = membre;
+    }
 
     @Override
     public String toString() {

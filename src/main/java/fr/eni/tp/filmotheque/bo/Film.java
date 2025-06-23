@@ -29,8 +29,6 @@ public class Film {
         this.annee = annee;
         this.duree = duree;
         this.synopsis = synopsis;
-        this.realisateur = realisateur;
-        this.genre = genre;
         this.acteurs = new ArrayList<>();
         this.avis = new ArrayList<>();
 
@@ -42,8 +40,6 @@ public class Film {
         this.annee = annee;
         this.duree = duree;
         this.synopsis = synopsis;
-        this.realisateur = realisateur;
-        this.genre = genre;
         acteurs = new ArrayList<>();
         this.avis = new ArrayList<>();
     }

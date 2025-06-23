@@ -1,0 +1,9 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     data-th-fragment="frag-liste-genre">
+    <label for="idGenreFilm">Genre : </label>
+    <Select  id="idGenreFilm" data-th-field="*{genre}">
+        <option data-th-if="${film.getId()!=0}" data-th-text="*{genre}" data-th-value="*{genre.id}"></option>
+        <option data-th-if="${film.getId()==0}" data-th-each="genreFromList : ${genreSession}" data-th-value="${genreFromList.id}"
+              data-th-text="${genreFromList}"></option>
+    </Select>
+</div>

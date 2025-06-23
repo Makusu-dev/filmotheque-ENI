@@ -1,10 +1,7 @@
 package fr.eni.tp.filmotheque.controller;
 
 import fr.eni.tp.filmotheque.bll.FilmService;
-import fr.eni.tp.filmotheque.bo.Avis;
-import fr.eni.tp.filmotheque.bo.Film;
-import fr.eni.tp.filmotheque.bo.Genre;
-import fr.eni.tp.filmotheque.bo.Membre;
+import fr.eni.tp.filmotheque.bo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,14 +55,18 @@ public class FilmController {
      */
 
     @GetMapping("/creer")
-    public ModelAndView creerFilm(){
+    public String creerFilm(Model model){
+        List<Participant> listeParticipants=filmService.consulterParticipants();
         Film film = new Film();
-        return new ModelAndView("view-film-creer", "film", film);
+        model.addAttribute("film", film);
+        model.addAttribute("listeParticipants", listeParticipants);
+        return "view-film-creer";
     }
 
     @PostMapping("/creer")
     public String creerFilm(@ModelAttribute("film") Film film){
         filmService.creerFilm(film);
+
         return "redirect:/liste-films";
     }
 

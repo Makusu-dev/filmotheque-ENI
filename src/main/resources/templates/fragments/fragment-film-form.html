@@ -1,27 +1,53 @@
 <Form class="flex-outer"
       xmlns:th="http://www.thymeleaf.org"
-      data-th-fragment="frag-film-form(action, titreForm, fragListeDesGenres, fragListeDesActeurs, fragListeDesAvis)"
+      data-th-fragment="frag-film-form(action, titreForm, fragListeDesGenres, fragListeDesParticipants, fragListeDesAvis)"
       data-th-action="@{${action}}"
       data-th-object=${film}
 method="post">
 
-    <div><label for = "inputId" ></label><input hidden="hidden" data-th-readonly="${#strings.contains(action,'detail')}" id="inputId" type="number" data-th-field="*{genre}"/></div>
-    <!-- Ajout liste des Genres d’un film -->
+    <div><label for = "inputId" ></label><input hidden="hidden" data-th-readonly="${#strings.contains(action,'detail')}" id="inputId" type="number"/></div>
 
+    <!-- Ajout liste des Genres d’un film -->
     <div data-th-replace="${fragListeDesGenres}"></div>
 
     <div><label for="inputAnnee"> Année:</label> <input id="inputAnnee" type="number" data-th-field="*{annee}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
     <div><label for="inputTitre"> Titre:</label> <input id="inputTitre" type="text" data-th-field="*{titre}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
-    <!-- Problème avec le converter il faut implementer le cas ou le film est null-->
+
+    <!-- Lecture du réalisateur -->
     <th:block data-th-if="${film.getId()!=0}">
-    <div><label for="inputReal"> Réalisateur :</label> <input id="inputReal" type="text" data-th-name="realisateur" data-th-value="*{realisateur.getId()}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
+    <div><label for="inputReal"> Réalisateur :</label><input id="inputReal" type="text" data-th-field="*{realisateur}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
     </th:block>
+
+    <!-- Ajout d'un realisateur -->
+    <th:block data-th-if="${film.getId()==0}">
+        <div>
+        <label for="selectReal"> Réalisateur :</label>
+        <select id="selectReal" data-th-field="*{realisateur}">
+            <option  data-th-replace="${fragListeDesParticipants}"></option>
+        </select>
+        </div>
+    </th:block>
+
 
     <div><label for="inputDuree"> Durée:</label> <input id="inputDuree" type="number" data-th-field="*{duree}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
 
-    <!-- Ajout liste des Acteurs d’un film -->
+    <!-- liste des Acteurs du film -->
     <th:block data-th-if="${film.getId()!=0}">
-        <div  data-th-replace="${fragListeDesActeurs}"></div>
+        <div>
+            <label for="getActeurs"> Acteurs :</label>
+            <Select data-th-field="*{acteurs}" id="getActeurs" name="acteurs" multiple disabled>
+            <option data-th-each="acteur: ${film.getActeurs()}" data-th-value="${acteur.id}" data-th-text="${'--'+acteur.getPrenom()+ ' ' +acteur.getNom()}"></option>
+        </Select></div>
+    </th:block>
+
+    <!-- Ajout liste des Acteurs d’un film -->
+    <th:block data-th-if="${film.getId()==0}">
+        <div>
+        <label for="selectActeurs"> Acteurs :</label>
+        <select id="selectActeurs" data-th-field="*{acteurs}" multiple >
+        <option  data-th-replace="${fragListeDesParticipants}"></option>
+        </select>
+        </div>
     </th:block>
 
     <!-- Ajout liste des Avis d’un film-->

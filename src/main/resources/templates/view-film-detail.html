@@ -10,9 +10,9 @@
 <main class="center-main">
     <!-- Placement du formulaire en fragments-->
     <div data-th-replace="~{fragments/fragment-film-form ::
-frag-film-form('/films/detail', 'Détails du film', ~{fragments/fragment-liste-genre-lecture :: frag-liste-genre-lecture},
-~{fragments/fragment-liste-acteurs-lecture :: frag-liste-acteurs-lecture},
-~{fragments/fragment-liste-avis-lecture :: frag-liste-avis-lecture})}"></div>
+frag-film-form('/films/detail', 'Détails du film', ~{fragments/fragment-liste-genre :: frag-liste-genre},
+~{fragments/fragment-liste-participants :: frag-liste-participants},
+~{fragments/fragment-liste-avis :: frag-liste-avis})}"></div>
 </main>
 </body>
 </html>
