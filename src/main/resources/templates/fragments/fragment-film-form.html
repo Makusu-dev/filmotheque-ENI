@@ -32,7 +32,7 @@ method="post">
     <div><label for="inputDuree"> Durée:</label> <input id="inputDuree" type="number" data-th-field="*{duree}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
 
     <!-- liste des Acteurs du film -->
-    <th:block data-th-if="${film.getId()!=0}">
+    <th:block data-th-if="*{getId()!=0}">
         <div>
             <label for="getActeurs"> Acteurs :</label>
             <Select data-th-field="*{acteurs}" id="getActeurs" name="acteurs" multiple disabled>

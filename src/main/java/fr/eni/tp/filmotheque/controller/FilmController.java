@@ -58,6 +58,7 @@ public class FilmController {
     public String creerFilm(Model model){
         List<Participant> listeParticipants=filmService.consulterParticipants();
         Film film = new Film();
+
         model.addAttribute("film", film);
         model.addAttribute("listeParticipants", listeParticipants);
         return "view-film-creer";
@@ -66,13 +67,7 @@ public class FilmController {
     @PostMapping("/creer")
     public String creerFilm(@ModelAttribute("film") Film film){
         filmService.creerFilm(film);
-
         return "redirect:/liste-films";
-    }
-
-    @RequestMapping(path="/avis",  method = {RequestMethod.GET, RequestMethod.POST})
-    private String avis() {
-        return "view-avis-creer";
     }
 
     // Méthode pour charger la liste des cours en session

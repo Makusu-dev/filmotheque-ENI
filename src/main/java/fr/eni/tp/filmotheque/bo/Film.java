@@ -16,7 +16,7 @@ public class Film {
     //Associations
 
     private List<Participant> acteurs;
-    private List<Avis> avis;
+    private List<Avis> avis = new ArrayList<>();
     private Participant realisateur;
     private Genre genre;
 
@@ -104,8 +104,8 @@ public class Film {
         return acteurs;
     }
 
-    public void ajouterActeur(Participant acteur) {
-        this.acteurs.add(acteur);
+    public void setActeurs(List<Participant> acteurs) {
+        this.acteurs = acteurs;
     }
 
     public List<Avis> getAvis() {
