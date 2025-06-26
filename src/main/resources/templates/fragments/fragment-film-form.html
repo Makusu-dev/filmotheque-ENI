@@ -4,14 +4,16 @@
       data-th-action="@{${action}}"
       data-th-object=${film}
 method="post">
-
+    <div data-th-replace="~{fragments/errors/fragment-errors :: frag-errors}"></div>
     <div><label for = "inputId" ></label><input hidden="hidden" data-th-readonly="${#strings.contains(action,'detail')}" id="inputId" type="number"/></div>
 
     <!-- Ajout liste des Genres d’un film -->
     <div data-th-replace="${fragListeDesGenres}"></div>
 
-    <div><label for="inputAnnee"> Année:</label> <input id="inputAnnee" type="number" data-th-field="*{annee}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
-    <div><label for="inputTitre"> Titre:</label> <input id="inputTitre" type="text" data-th-field="*{titre}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
+    <div><label for="inputAnnee"> Année:</label> <input id="inputAnnee" type="number" data-th-field="*{annee}" data-th-readonly="${#strings.contains(action,'detail')}"/>
+        <div data-th-replace="~{fragments/errors/fragment-error :: frag-error('annee')}"></div></div>
+    <div><label for="inputTitre"> Titre:</label> <input id="inputTitre" type="text" data-th-field="*{titre}" data-th-readonly="${#strings.contains(action,'detail')}"/>
+        <div data-th-replace="~{fragments/errors/fragment-error :: frag-error('titre')}"></div></div>
 
     <!-- Lecture du réalisateur -->
     <th:block data-th-if="${film.getId()!=0}">
@@ -25,11 +27,13 @@ method="post">
         <select id="selectReal" data-th-field="*{realisateur}">
             <option  data-th-replace="${fragListeDesParticipants}"></option>
         </select>
+            <div data-th-replace="~{fragments/errors/fragment-error :: frag-error('realisateur')}"></div>
         </div>
     </th:block>
 
 
-    <div><label for="inputDuree"> Durée:</label> <input id="inputDuree" type="number" data-th-field="*{duree}" data-th-readonly="${#strings.contains(action,'detail')}"/> </div>
+    <div><label for="inputDuree"> Durée:</label> <input id="inputDuree" type="number" data-th-field="*{duree}" data-th-readonly="${#strings.contains(action,'detail')}"/>
+        <div data-th-replace="~{fragments/errors/fragment-error :: frag-error('duree')}"></div></div>
 
     <!-- liste des Acteurs du film -->
     <th:block data-th-if="*{getId()!=0}">
@@ -55,6 +59,7 @@ method="post">
     <div data-th-if="${film.getId()!=0}" data-th-replace="${fragListeDesAvis}"></div>
     </th:block>
 
-    <div><label for="inputSynopsis"> Synopsis:</label> <input data-th-readonly="${#strings.contains(action,'detail')}" id="inputSynopsis" type="text" data-th-field="*{synopsis}"/> </div>
+    <div><label for="inputSynopsis"> Synopsis:</label> <input data-th-readonly="${#strings.contains(action,'detail')}" id="inputSynopsis" type="text" data-th-field="*{synopsis}"/>
+        <div data-th-replace="~{fragments/errors/fragment-error :: frag-error('synopsis')}"></div></div>
     <div><input type="submit" value="Enregistrer"/></div>
 </Form>

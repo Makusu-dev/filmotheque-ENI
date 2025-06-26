@@ -1,5 +1,10 @@
 package fr.eni.tp.filmotheque.bo;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,16 +13,24 @@ public class Film {
 
     //Atributs
     private long id;
-    private String Titre;
+    @NotBlank
+    @Size(min = 1, max = 250)
+    private String titre;
+    @NotNull
+    @Min(1900)
     private int annee;
+    @Min(0)
     private int duree;
+    @Size(min = 20, max = 250)
     private String synopsis;
 
     //Associations
 
     private List<Participant> acteurs;
     private List<Avis> avis = new ArrayList<>();
+    @NotNull
     private Participant realisateur;
+    @NotNull
     private Genre genre;
 
 
@@ -25,7 +38,7 @@ public class Film {
     }
 
     public Film(String titre, int annee, int duree, String synopsis) {
-        Titre = titre;
+        this.titre = titre;
         this.annee = annee;
         this.duree = duree;
         this.synopsis = synopsis;
@@ -36,7 +49,7 @@ public class Film {
 
     public Film(long id, String titre, int annee, int duree, String synopsis) {
         this.id = id;
-        Titre = titre;
+        this.titre = titre;
         this.annee = annee;
         this.duree = duree;
         this.synopsis = synopsis;
@@ -53,11 +66,11 @@ public class Film {
     }
 
     public String getTitre() {
-        return Titre;
+        return titre;
     }
 
     public void setTitre(String titre) {
-        Titre = titre;
+        this.titre = titre;
     }
 
     public int getAnnee() {
@@ -120,7 +133,7 @@ public class Film {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Film ");
         sb.append("(").append(id).append(")\n");
-        sb.append("\t").append("Titre : ").append(Titre);
+        sb.append("\t").append("Titre : ").append(titre);
         sb.append("\t").append("[ Annee :").append(annee);
         sb.append("\t").append(", duree=").append(duree).append(" ]\n");
         sb.append("\t").append("Synopsis : \'").append(synopsis).append('\'');

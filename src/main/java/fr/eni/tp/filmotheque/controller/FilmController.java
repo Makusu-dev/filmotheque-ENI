@@ -2,9 +2,11 @@ package fr.eni.tp.filmotheque.controller;
 
 import fr.eni.tp.filmotheque.bll.FilmService;
 import fr.eni.tp.filmotheque.bo.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,9 +67,17 @@ public class FilmController {
     }
 
     @PostMapping("/creer")
-    public String creerFilm(@ModelAttribute("film") Film film){
-        filmService.creerFilm(film);
-        return "redirect:/liste-films";
+    public String creerFilm(@Valid @ModelAttribute("film") Film film, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            List<Participant> listeParticipants=filmService.consulterParticipants();
+            model.addAttribute("film", film);
+            model.addAttribute("listeParticipants", listeParticipants);
+            return "view-film-creer";
+        }
+        else{
+            filmService.creerFilm(film);
+            return "redirect:/liste-films";
+        }
     }
 
     // Méthode pour charger la liste des cours en session

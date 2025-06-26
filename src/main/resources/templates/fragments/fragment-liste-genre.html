@@ -6,4 +6,5 @@
         <option data-th-if="${film.getId()==0}" data-th-each="genreFromList : ${genreSession}" data-th-value="${genreFromList.id}"
               data-th-text="${genreFromList}"></option>
     </Select>
+    <div data-th-replace="~{fragments/errors/fragment-error :: frag-error('genre')}"></div>
 </div>
