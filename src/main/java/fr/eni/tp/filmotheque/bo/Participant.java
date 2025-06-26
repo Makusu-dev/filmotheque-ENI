@@ -7,7 +7,8 @@ public class Participant extends Personne {
     //Associations
 
 
-
+    public Participant() {
+    }
 
     public Participant(String nom, String prenom) {
         super(nom, prenom);

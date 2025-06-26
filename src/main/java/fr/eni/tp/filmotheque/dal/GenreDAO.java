@@ -5,6 +5,6 @@ import fr.eni.tp.filmotheque.bo.Genre;
 import java.util.List;
 
 public interface GenreDAO {
-    void read(long id);
+    Genre read(long id);
     List<Genre> findAll();
 }
