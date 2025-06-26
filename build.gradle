@@ -25,10 +25,21 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
+    compileOnly 'org.projectlombok:lombok'
+    //testImplementation 'org.springframework.security:spring-security-test'
 
-    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    //driver SQL a commenter/décommenter selon le contexte
+    //a l'eni:
+    //runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+
+    //hors ENI:
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.hsqldb:hsqldb'
+
+
+
 }
 
 tasks.named('test') {
